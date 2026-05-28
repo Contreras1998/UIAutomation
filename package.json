@@ -1,15 +1,24 @@
 {
   "name": "uiautomation",
   "version": "1.0.0",
-  "description": "",
+  "description": "BDD UI automation demo for Sauce Demo using Cucumber and Playwright browser automation",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npm run test:bdd",
+    "test:bdd": "cucumber-js tests/features --tags \"not @manual\" --require-module ts-node/register --require tests/support/**/*.ts --require tests/steps/**/*.ts --format progress --format html:reports/cucumber-report.html --format json:reports/cucumber-report.json",
+    "test:all": "npm run test:bdd",
+    "test:typecheck": "tsc --noEmit",
+    "prepare": "npx playwright install"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@cucumber/cucumber": "^12.9.0",
+    "@types/node": "^25.9.1",
+    "playwright": "^1.60.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.6.2"
   }
 }
